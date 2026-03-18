@@ -12,7 +12,7 @@ var window = floaty.window(
 );
 
 window.setPosition(100, 300);
-window.setAdjustEnabled(true);
+window.setAdjustEnabled(false);
 
 function doClick(node) {
 	if (!node) return false;
@@ -50,14 +50,14 @@ function adLoop() {
 				sleep(1000);
 				continue;
 			}
-
 			for (var i = 0; i < 30 && running; i++) {
+                if (!running) break;
+                log("观看中... " + (i + 1) + "秒");
 				sleep(1000);
 			}
-
-			if (!running) break;
-			back();
 			sleep(2000);
+            log("广告观看完成，返回主界面");
+			back();
 		} else {
 			log("未找到+5按钮，1秒后重试");
 			sleep(1000);
